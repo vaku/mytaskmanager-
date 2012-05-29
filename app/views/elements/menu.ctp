@@ -13,7 +13,7 @@
 
         <li><?php echo $this->Html->link(__('New Task', true), array('action' => 'add_my_task')); ?></li>
 
-
+        <li><?php echo $this->Html->link(__('My Dpr', true), array('controller'=> 'dprs', 'action' => 'index')); ?></li>
 
 
     </ul>

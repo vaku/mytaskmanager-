@@ -8,7 +8,7 @@ class TasksController extends AppController {
     var $uses = array("User", "Task", "Taskassign", 'Comment');
     var $layout = "default";
 
-    function beforeFilter() {
+    function beforeFilter() {   
 
         $this->Auth->allow('');
         $this->Auth->authError = 'please login to view that page';
