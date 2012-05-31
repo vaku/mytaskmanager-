@@ -4,6 +4,7 @@ class DprsController extends AppController {
 
     var $name = 'Dprs';
     var $components = array('Auth', 'Session');
+    var $uses = array('User', 'Dpr');
 
     function beforeFilter() {
 
@@ -29,6 +30,31 @@ class DprsController extends AppController {
             $this->redirect(array('action' => 'index'));
         }
         $this->set('dpr', $this->Dpr->read(null, $id));
+    }
+
+    function admindpr() {
+        $userrole = $this->User->getRole($this->Auth->user('id'));
+        if ($userrole != 'admin') {
+            $this->redirect(array('controller' => 'tasks', 'action' => 'index'));
+        } else {
+            $user = $this->User->find('all');
+            $this->set('users', $user);
+        }
+    }
+
+    // show all dprs of the particular user
+    function view_user_dprs($user_id = null) {
+        $userrole = $this->User->getRole($this->Auth->user('id'));
+        if ($userrole != 'admin') {
+            $this->redirect(array('controller' => 'tasks', 'action' => 'index'));
+        } else{
+            if (!$user_id) {
+            $this->Session->setFlash(__('Invalid dpr', true));
+            $this->redirect(array('action' => 'admindpr'));
+        }
+        $this->set('dprs', $this->Dpr->getUserDprs($user_id));
+        }
+        
     }
 
     function add() {
@@ -71,11 +97,11 @@ class DprsController extends AppController {
             $this->Session->setFlash(__('Invalid dpr', true));
             $this->redirect(array('action' => 'index'));
         }
-        
+
         if (empty($this->data)) {         // data check if empty it fill the data . 
             $this->data = $this->Dpr->read(null, $id);
-          //  $this->data["Dpr"]["created_on"] = date("d-m-Y",$this->data["Dpr"]["created_on"]);
-        }else{
+            //  $this->data["Dpr"]["created_on"] = date("d-m-Y",$this->data["Dpr"]["created_on"]);
+        } else {
 
             $currenttime = $this->data["Dpr"]["created_on"] = strtotime($this->data["Dpr"]["created_on"]);
             $comparedate = time($currenttime) - (172800);
@@ -90,7 +116,6 @@ class DprsController extends AppController {
                 } else {
                     $this->Session->setFlash(__('The dpr could not be saved. Please, try again.', true));
                 }
-
             }
         }
     }

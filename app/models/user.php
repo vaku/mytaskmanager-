@@ -105,10 +105,13 @@ class User extends AppModel {
         return $data;
     }
 
+    //fetching role from the database
     function getRole($id) {
         $conditions = array('User.id' => $id);
         return $this->field('role', $conditions);
     }
+    
+    // fetching only normaluser from database. 
     
     function getNormalUser($whether_list = false){
         $conditions = array("User.role"=>'normaluser','User.status'=>1);

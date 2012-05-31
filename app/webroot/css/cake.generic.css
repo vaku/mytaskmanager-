@@ -574,14 +574,15 @@ div.code-coverage-results span.result-good {
 
 #admintitle
 {
-    background-color: #a8ea9c;
-    opacity:0.9;
+    background-color: #2f96b4;
+    opacity:0.6;
     border: 1px solid sandybrown;
     -webkit-border-radius:8px;
     -moz-border-radius:8px;
+   
 
     text-align: center;
-
+    
 }
 
 

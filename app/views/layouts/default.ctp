@@ -91,7 +91,7 @@
 
             <div id="footer">
 
-                <p> TaskManager on CakePhp @2012</p>
+                <p> TaskManager @ 2012</p>
 
 
             </div>

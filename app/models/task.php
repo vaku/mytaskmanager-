@@ -44,6 +44,7 @@ class Task extends AppModel {
         )
     );
 
+    // fetching role from the user table 1.e admin or normaluser.
     function getRole($id) {
         $conditions = array('User.id' => $id);
         return $this->field('role', $conditions);

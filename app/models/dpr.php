@@ -20,7 +20,7 @@ class Dpr extends AppModel {
     function getUserDprs($user_id) {
 
         $recursive = -1;
-        $conditions = array('Dpr.user_id' => $user_id);   // where user_id in task table is = to current logged in user (id we have passed)
+        $conditions = array('Dpr.user_id' => $user_id);   // where user_id in dpr table is = to current logged in user (id we have passed)
         return $this->find('all', array('conditions' => $conditions, "recursive" => $recursive)); //fetching tasks from tasks table with where clause 
     }
 
@@ -38,4 +38,15 @@ class Dpr extends AppModel {
         }
     }
 
+  // fetching users - so that admin can list all dpr for particualr user.
+    
+ function getUserdpr($user_id){
+     
+     $recursive = -1;
+     $conditions = array('Dpr.user_id' => $user_id);  
+     $order = array('Dpr.user_id Asc');
+     return $this->find('all', array('conditions' => $conditions, "recursive" => $recursive, 'order'=> $order));
+ }
+  
+    
 }
