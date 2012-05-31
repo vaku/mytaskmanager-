@@ -43,7 +43,7 @@ class UsersController extends AppController {
         if ($userrole != 'admin') {
             $this->redirect(array('controller' => 'tasks', 'action' => 'index'));
         } else {
-            $this->set('tasks', $this->Task->find('all'));
+            $this->set('tasks', $this->Task->getTaskSorted());
         }
     }
 

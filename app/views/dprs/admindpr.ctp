@@ -31,9 +31,7 @@
 	</tr>
 <?php endforeach; ?>
 	</table>
-	<p>
-	hello	</p>
-
+	
 	
 </div>
  <?php echo $this->element("admin_menu"); ?>

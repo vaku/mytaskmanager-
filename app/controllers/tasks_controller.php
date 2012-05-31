@@ -172,7 +172,7 @@ class TasksController extends AppController {
         } else {
             if ($this->Task->delete($id)) {
                 $this->Session->setFlash(__('Task deleted', true));
-                $this->redirect(array('action' => 'index'));
+                $this->redirect(array('controller'=>'users','action' => 'adminpage'));
             } else {
                 $this->Session->setFlash(__('Task was not deleted', true));
                 $this->redirect(array('action' => 'index'));

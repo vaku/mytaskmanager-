@@ -31,7 +31,7 @@ class DprsController extends AppController {
         }
         $this->set('dpr', $this->Dpr->read(null, $id));
     }
-
+    
     function admindpr() {
         $userrole = $this->User->getRole($this->Auth->user('id'));
         if ($userrole != 'admin') {

@@ -5,7 +5,7 @@
       <th class="actions"><?php __('Actions');?></th>
         </tr>
              </table>
-        <h2> User Lists</h2>
+        <h2> Users List</h2>
         <table>
             <tr>
             <th>User ID</th>
@@ -30,9 +30,7 @@
 	</tr>
 <?php endforeach; ?>
 	</table>
-	<p>
-	hello	</p>
-
+	
 	
 </div>
 <?php echo $this->element("admin_menu"); ?> 

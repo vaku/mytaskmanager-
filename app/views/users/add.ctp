@@ -24,7 +24,8 @@
 
 
 <div class="users form">
-<?php echo $this->Form->create('User');?>
+     <div id="validation_error" style="display:none;background-color:#fff"></div>
+<?php echo $this->Form->create('User',array("controller"=>"users","action"=>"add","onsubmit"=>"return validate_form()"));?>
 	<fieldset>
 		<legend><?php __('Add User'); ?></legend>
 	<?php

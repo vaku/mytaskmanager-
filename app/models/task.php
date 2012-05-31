@@ -61,5 +61,12 @@ class Task extends AppModel {
         $conditions = array('Task.user_id' => $user_id);   // where user_id in task table is = to current logged in user (id we have passed)
         return $this->find('all',array('conditions' => $conditions, "recursive"=>$recursive)); //fetching tasks from tasks table with where clause 
     }
+    
+    function getTaskSorted(){
+        
+        $recursive = -1;
+        $order = 'Task.created_on DESC';
+        return $this->find('all', array('order'=> $order));
+    }
 
 }
