@@ -88,7 +88,8 @@ class TasksController extends AppController {
     }
 
     function add() {
-        // check logged in user is admin
+        // check logged in user is admin. 
+        
         $users_list = $this->User->getUsers(true);
         $this->set("users", $users_list);
 

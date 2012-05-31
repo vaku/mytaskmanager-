@@ -47,6 +47,9 @@ class UsersController extends AppController {
         }
     }
 
+    //to change password
+    
+   
     function index() {
         $userrole = $this->User->getRole($this->Auth->user('id'));
 
