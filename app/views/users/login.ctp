@@ -20,6 +20,7 @@
         font-family:"HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
         font-weight:200;
         font-size:24px;
+
         width:100%;
         padding:0px;
         margin: 0px;
@@ -47,6 +48,7 @@
         -webkit-box-shadow:rgba(200,200,200,0.7) 0 4px 10px -1px;
         -khtml-box-shadow:rgba(200,200,200,0.7) 0 4px 10px -1px;
         box-shadow:rgba(200,200,200,0.7) 0 4px 10px -1px;
+       
     }
 
     #topheader {
@@ -57,7 +59,10 @@
 
 
     }
+    
+   
 
+    
     
 
 </style>

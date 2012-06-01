@@ -3,7 +3,7 @@
 class User extends AppModel {
 
     var $name = 'User';
-    var $displayField = 'username';
+    var $displayField = 'name';
     //The Associations below have been created with all possible keys, those that are not needed can be removed
 
     var $hasMany = array(
@@ -47,7 +47,6 @@ class User extends AppModel {
             'counterQuery' => ''
         )
     );
-    
     var $validate = array(
         'username' => array(
             'empty' => array(
@@ -75,7 +74,7 @@ class User extends AppModel {
                 'message' => 'That username is already in use by another user'
             )
         ),
-       'password' => array(
+        'password' => array(
             'empty' => array(
                 'rule' => 'notEmpty',
                 'required' => true,
@@ -92,7 +91,6 @@ class User extends AppModel {
         )
     );
 
-    
     function hashPasswords($data) {
 
         if (isset($this->data['User']['password'])) {
@@ -110,28 +108,28 @@ class User extends AppModel {
         $conditions = array('User.id' => $id);
         return $this->field('role', $conditions);
     }
-    
+
     // fetching only normaluser from database. 
-    
-    function getNormalUser($whether_list = false){
-        $conditions = array("User.role"=>'normaluser','User.status'=>1);
+
+    function getNormalUser($whether_list = false) {
+        $conditions = array("User.role" => 'normaluser', 'User.status' => 1);
         $recursive = -1;
-        
-        if($whether_list){
-            return $this->find("list",array("conditions"=>$conditions,"recursive"=>$recursive));
-        }else{
-            return $this->find("all",array("conditions"=>$conditions,"recursive"=>$recursive));
+
+        if ($whether_list) {
+            return $this->find("list", array("conditions" => $conditions, "recursive" => $recursive));
+        } else {
+            return $this->find("all", array("conditions" => $conditions, "recursive" => $recursive));
         }
     }
-    
-    function getUsers($whether_list = false){
-        $conditions = array('User.status'=>1);
+
+    function getUsers($whether_list = false) {
+        $conditions = array('User.status' => 1);
         $recursive = -1;
-        
-        if($whether_list){
-            return $this->find("list",array("conditions"=>$conditions,"recursive"=>$recursive));
-        }else{
-            return $this->find("all",array("conditions"=>$conditions,"recursive"=>$recursive));
+
+        if ($whether_list) {
+            return $this->find("list", array("conditions" => $conditions, "recursive" => $recursive));
+        } else {
+            return $this->find("all", array("conditions" => $conditions, "recursive" => $recursive));
         }
     }
 

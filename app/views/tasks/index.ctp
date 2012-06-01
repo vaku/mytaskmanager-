@@ -41,16 +41,16 @@ function update_status(task_id,new_status){
         <tr>
 
             <th>Subject</th>
-            <th>Task</th>
             <th> Created On </th>
             <th> Due date </th>
+           
 
         </tr>
         <?php foreach ($tasks as $task) { ?>
 
 
             <td> <?php echo $html->link($task ['Task']['sub'], array('action' => 'view', $task ['Task']['id'])); ?> </td>
-            <td> <?php echo $task ['Task']['content']; ?> </td>
+           
             <td> <?php echo date('jS M', $task ['Task']['created_on']); ?> </td>
             <td> <?php echo date('jS M', $task ['Task']['due_date']); ?> </td>
 

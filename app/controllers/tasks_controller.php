@@ -40,7 +40,7 @@ class TasksController extends AppController {
     }
 
     function index() {
-        $tasks = $this->Task->getUserTasks($this->Auth->user('id'));
+        $tasks = $this->Taskassign->getUserTasks($this->Auth->user('id'));
         $this->set('tasks', $tasks);
 
 //        $this->set('tasks', $this->Task->find('all'));
@@ -64,6 +64,21 @@ class TasksController extends AppController {
         }
     }
 
+    
+    function admin_show_user_tasks($user_id){
+        
+        $userrole = $this->User->getRole($this->Auth->user('id'));
+        
+        if($userrole != "admin"){
+           $this->redirect(array('controller' => 'tasks', 'action' => 'index'));
+        }else {
+            $this->set('tasks', $this->Taskassign->getUserTasks($user_id));
+        }
+        
+        
+    }
+    
+    
     function add_my_task() {
 
         if (!empty($this->data)) {

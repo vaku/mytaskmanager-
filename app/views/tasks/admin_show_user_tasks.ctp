@@ -1,3 +1,6 @@
+<?php
+
+?>
 <?php ?>
 <?php //debug($tasks); ?>
 <div class="tasks index">
@@ -5,16 +8,15 @@
     <h2>Admin Dashboard</h2> 
     <table cellpadding="0" cellspacing="0">
         <tr>
-
-
+           
         </tr>
     </table>
-    <div id="admintitle" >    <h2> All Tasks</h2>   </div>
+    <div id="admintitle">    <h2> All Tasks</h2>   </div>
     <table>
         <tr>
 
             <th>Subject</th>
-            <th>Assigned To</th>
+   
             <th>Created On</th>
             <th>Due date</th>
 
@@ -24,7 +26,7 @@
 
             
             <td> <?php echo $html->link($task['Task']['sub'],array("controller"=>"tasks","action"=>"view",$task["Task"]["id"])); ?> </td>
-            <td><?php echo $html->link($users[$task["Taskassign"][0]["user_id"]],array("controller"=>"tasks","action"=>"admin_show_user_tasks",$task["Taskassign"][0]["user_id"])); ?></td>
+            
             <td> <?php echo date('jS M', $task ['Task']['created_on']); ?> </td>
             <td> <?php echo date('jS M', $task ['Task']['due_date']); ?> </td>
 

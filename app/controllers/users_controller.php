@@ -44,6 +44,7 @@ class UsersController extends AppController {
             $this->redirect(array('controller' => 'tasks', 'action' => 'index'));
         } else {
             $this->set('tasks', $this->Task->getTaskSorted());
+            $this->set("users",$this->User->getUsers(true));
         }
     }
 
