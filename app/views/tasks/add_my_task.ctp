@@ -40,7 +40,7 @@
         echo $this->Form->input('sub', array(
              'id' => 'sub'
          ));
-        echo $this->Form->input('content');
+        echo $this->Form->input('content', array('style'=> 'width:450px;'));
         echo $this->Form->input('created_on', array(
             'class' => 'datepicker',
             'type' => 'text', 'id' => 'created_on',

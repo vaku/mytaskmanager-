@@ -22,6 +22,8 @@ class TasksController extends AppController {
         if ($this->Auth->user("userrole") == "admin") {
             $show_admin_links = true;
         }
+       
+        
         $this->set("show_admin_links", $show_admin_links);
     }
 
@@ -145,18 +147,18 @@ class TasksController extends AppController {
         }
         if (!empty($this->data)) {
 
-            if (!$this->Task->checkAccess($this->data["Task"]["id"], $this->user_id)) {
-                $this->Session->setFlash("Admin access only");
-                $this->redirect(array("controller" => "Tasks", "action" => "index"));
-                exit();
-            } else {
+          //  if (!$this->Task->checkAccess($this->data["Task"]["id"], $this->user_id)) {
+            //    $this->Session->setFlash("Admin access only");
+              //  $this->redirect(array("controller" => "Tasks", "action" => "index"));
+                //exit();
+           // } else {
                 if ($this->Task->save($this->data)) {
                     $this->Session->setFlash(__('The task has been saved', true));
                     $this->redirect(array('action' => 'index'));
                 } else {
                     $this->Session->setFlash(__('The task could not be saved. Please, try again.', true));
                 }
-            }
+           // }
         }
         if (empty($this->data)) {
             $this->data = $this->Task->read(null, $id);
@@ -178,14 +180,17 @@ class TasksController extends AppController {
             $this->redirect(array('action' => 'index'));
         }
 
-        $userrole = $this->User->getRole($this->Auth->user('id'));
+         $userrole = $this->User->getRole($this->Auth->user('id'));
 
-        if ($userrole != 'admin') {
-            $this->Session->setFlash('admin access only');
-            $this->redirect(array("controller" => "tasks", "action" => "index"));
+       if ($userrole != 'admin') {
+           $this->Session->setFlash('admin access only');
+           $this->redirect(array("controller" => "tasks", "action" => "index"));
 
-            exit();
+           exit();
         } else {
+        
+        
+            
             if ($this->Task->delete($id)) {
                 $this->Session->setFlash(__('Task deleted', true));
                 $this->redirect(array('controller'=>'users','action' => 'adminpage'));

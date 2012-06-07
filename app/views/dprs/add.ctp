@@ -35,7 +35,7 @@
         <legend><?php __('Add Dpr'); ?></legend>
         <?php
     
-        echo $this->Form->input('task', array('id'=> 'dpr', 'style'=>'width:500px;'));
+        echo $this->Form->input('dpr', array('id'=> 'dpr', 'style'=>'width:500px;'));
         echo $this->Form->input('created_on', array('class' => 'datepicker',
             'type' => 'text', 'id' => 'created_on',
             'readonly' => 'readonly')
@@ -50,12 +50,14 @@
     <h3><?php __('Actions'); ?></h3>
     <ul>
 
-        <li><?php echo $this->Html->link(__('List Dprs', true), array('action' => 'index')); ?></li>
-        <li>
+         <li>
             <?php
             echo $this->Html->link(__('Home', true), array('controller' => 'tasks', 'action' => 'index'));
             ?>  
         </li>
+        
+        <li><?php echo $this->Html->link(__('List Dprs', true), array('action' => 'index')); ?></li>
+       
 
     </ul>
 </div>

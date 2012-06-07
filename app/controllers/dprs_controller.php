@@ -106,7 +106,7 @@ class DprsController extends AppController {
             $currenttime = $this->data["Dpr"]["created_on"] = strtotime($this->data["Dpr"]["created_on"]);
             $comparedate = time($currenttime) - (172800);
 
-            if ($currenttime < $comparedate) {    //compare if created on day is less than 2days before-  cannot add 
+            if ($currenttime > $comparedate) {    //compare if created on day is less than 2days before-  cannot add 
                 $this->Session->setflash('cannot edit dpr of this date');
             } else {
 

@@ -1,10 +1,10 @@
 <div class="dprs index">
-	<h2><?php __('Dpr');?></h2>
-	 <div id="admintitle" >   <h2> All tasks</h2> </div>
+	<h2><?php __('Dprs List');?></h2>
+	 <div id="admintitle" >   <h2> All Dprs</h2> </div>
     <table>
         <tr>
 
-            <th>Task</th>
+            <th>DPR</th>
             <th> Created On </th>
   
 
@@ -16,15 +16,15 @@
 		
 	?>
 	
-		
+	<?php $date = date('jS M', $dpr['Dpr']['created_on']); ?>	
 
-		<td><?php echo $dpr['Dpr']['task']; ?>&nbsp;</td>
-		<td><?php echo date('jS M', $dpr['Dpr']['created_on']); ?>&nbsp;</td>
+		<td><?php echo $dpr['Dpr']['dpr']; ?>&nbsp;</td>
+		<td><?php echo $html->link($date, array('action' => 'view', $dpr['Dpr']['id'])); ?>&nbsp;</td>
 	
 		
                 <td class="actions">
           
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $dpr['Dpr']['id'])); ?>
+			
 			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $dpr['Dpr']['id'])); ?>
 			
 		</td>
@@ -37,12 +37,14 @@
 <div class="actions">
 	<h3><?php __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Todays Dpr', true), array('action' => 'add')); ?></li>
-		 <li>
+	 <li>
             <?php
             echo $this->Html->link(__('Home', true), array('controller' => 'tasks', 'action' => 'index'));
             ?>  
-        </li>
+        </li>	
+            
+            <li><?php echo $this->Html->link(__('Todays Dpr', true), array('action' => 'add')); ?></li>
+		
 	</ul>
 </div>
 

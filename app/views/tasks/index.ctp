@@ -1,6 +1,8 @@
+
+
 <script>
 
-function update_status(task_id,new_status){
+    function update_status(task_id,new_status){
         $("#"+task_id+"_mark_complete").hide();
         $("#"+task_id+"_mark_incomplete").hide();
         $("#"+task_id+"_updating_status").show();
@@ -43,14 +45,14 @@ function update_status(task_id,new_status){
             <th>Subject</th>
             <th> Created On </th>
             <th> Due date </th>
-           
+
 
         </tr>
         <?php foreach ($tasks as $task) { ?>
 
 
             <td> <?php echo $html->link($task ['Task']['sub'], array('action' => 'view', $task ['Task']['id'])); ?> </td>
-           
+
             <td> <?php echo date('jS M', $task ['Task']['created_on']); ?> </td>
             <td> <?php echo date('jS M', $task ['Task']['due_date']); ?> </td>
 
@@ -81,25 +83,28 @@ function update_status(task_id,new_status){
 
             </td>
 
-            <?php
-            if ($show_admin_links) {
+            <td class ="actions"> 
+
+                <?php
+                $chkuser = $this->Session->read('Auth.User.id');
+
                 echo $this->Html->link(__('Edit', true), array('action' => 'edit', $task['Task']['id']));
-            }
-            ?>
 
 
-            <?php
-            if ($show_admin_links) {
-                echo $this->Html->link(__('Delete', true), array('action' => 'delete', $task['Task']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $task['Task']['id']));
-            }
-            ?>
+                echo $this->Html->link(__('delete', true), array('action' => 'delete', $task['Task']['id']));
+               
+        
+                ?>
+
+
+
 
             </td>
             </tr>
-            <?php
-        }
-        ?>
+    <?php
+}
+?>
     </table>
 </div>
 
-<?php echo $this->element("menu"); ?>
+        <?php echo $this->element("menu"); ?>
